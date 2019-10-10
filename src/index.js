@@ -5,12 +5,14 @@ import { stopPropagation } from './utils/common';
 import { getFirstIcon } from './utils/toolbar';
 import Option from './components/Option';
 import { Dropdown, DropdownOption } from './components/Dropdown';
+import { handlePastedText } from './utils/handlePaste';
 
 module.exports = {
-  Editor,
-  stopPropagation,
-  getFirstIcon,
-  Option,
-  Dropdown,
-  DropdownOption,
+	Editor,
+	stopPropagation,
+	getFirstIcon,
+	handlePastedText,
+	Option,
+	Dropdown,
+	DropdownOption
 };
