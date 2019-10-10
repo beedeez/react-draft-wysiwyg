@@ -8,11 +8,11 @@ import { Dropdown, DropdownOption } from './components/Dropdown';
 import { handlePastedText } from './utils/handlePaste';
 
 module.exports = {
-	Editor,
-	stopPropagation,
-	getFirstIcon,
-	handlePastedText,
-	Option,
-	Dropdown,
-	DropdownOption
+  Editor,
+  stopPropagation,
+  getFirstIcon,
+  handlePastedText,
+  Option,
+  Dropdown,
+  DropdownOption,
 };
