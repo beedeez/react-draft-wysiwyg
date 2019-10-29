@@ -6,7 +6,7 @@ const getBlockRenderFunc = (config, customBlockRenderer) => (block) => {
     const renderedComponent = customBlockRenderer(block, config, config.getEditorState);
     if (renderedComponent) return renderedComponent;
   }
-  if (block.getType() === 'atomic') {
+  if (block.getType() === 'atomic' && block.getEntityAt(0)) {
     const contentState = config.getEditorState().getCurrentContent();
     const entity = contentState.getEntity(block.getEntityAt(0));
     if (entity && entity.type === 'IMAGE') {
