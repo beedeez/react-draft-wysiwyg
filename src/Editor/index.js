@@ -130,7 +130,9 @@ export default class WysiwygEditor extends Component {
 	}
 
 	componentDidMount(): void {
-		this.modalHandler.init(this.wrapperId);
+		requestAnimationFrame(() => {
+			this.modalHandler.init(this.wrapperId);
+		});
 	}
 	// todo: change decorators depending on properties recceived in componentWillReceiveProps.
 
@@ -309,7 +311,7 @@ export default class WysiwygEditor extends Component {
 
 	isImageAlignmentEnabled = () => this.state.toolbar.image.alignmentEnabled;
 
-	createEditorState = compositeDecorator => {
+	createEditorState = (compositeDecorator) => {
 		let editorState;
 		if (hasProperty(this.props, 'editorState')) {
 			if (this.props.editorState) {
@@ -353,7 +355,7 @@ export default class WysiwygEditor extends Component {
 		return editorState;
 	};
 
-	filterEditorProps = props =>
+	filterEditorProps = (props) =>
 		filter(props, [
 			'onChange',
 			'onEditorStateChange',
@@ -389,7 +391,7 @@ export default class WysiwygEditor extends Component {
 			'handlePastedText'
 		]);
 
-	changeEditorState = contentState => {
+	changeEditorState = (contentState) => {
 		const newContentState = convertFromRaw(contentState);
 		let { editorState } = this.state;
 		editorState = EditorState.push(
@@ -489,31 +491,31 @@ export default class WysiwygEditor extends Component {
 		const toolbarShow =
 			editorFocused || this.focusHandler.isInputFocused() || !toolbarOnFocus;
 
-
-		const toolBarContent = (<div
-			className={classNames('rdw-editor-toolbar', toolbarClassName)}
-			style={{
-				visibility: toolbarShow ? 'visible' : 'hidden',
-				...toolbarStyle
-			}}
-			onMouseDown={this.preventDefault}
-			aria-label="rdw-toolbar"
-			aria-hidden={(!editorFocused && toolbarOnFocus).toString()}
-			onFocus={this.onToolbarFocus}
-		>
-			{toolbar.options.map((opt, index) => {
-				const Control = Controls[opt];
-				const config = toolbar[opt];
-				if (opt === 'image' && uploadCallback) {
-					config.uploadCallback = uploadCallback;
-				}
-				return <Control key={index} {...controlProps} config={config} />;
-			})}
-			{toolbarCustomButtons &&
-				toolbarCustomButtons.map((button, index) =>
-					React.cloneElement(button, { key: index, ...controlProps })
-				)}
-		</div>);
+		const toolBarContent = (
+			<div
+				className={classNames('rdw-editor-toolbar', toolbarClassName)}
+				style={{
+					visibility: toolbarShow ? 'visible' : 'hidden',
+					...toolbarStyle
+				}}
+				onMouseDown={this.preventDefault}
+				aria-label="rdw-toolbar"
+				aria-hidden={(!editorFocused && toolbarOnFocus).toString()}
+				onFocus={this.onToolbarFocus}>
+				{toolbar.options.map((opt, index) => {
+					const Control = Controls[opt];
+					const config = toolbar[opt];
+					if (opt === 'image' && uploadCallback) {
+						config.uploadCallback = uploadCallback;
+					}
+					return <Control key={index} {...controlProps} config={config} />;
+				})}
+				{toolbarCustomButtons &&
+					toolbarCustomButtons.map((button, index) =>
+						React.cloneElement(button, { key: index, ...controlProps })
+					)}
+			</div>
+		);
 
 		return (
 			<div
@@ -522,10 +524,10 @@ export default class WysiwygEditor extends Component {
 				style={wrapperStyle}
 				onClick={this.modalHandler.onEditorClick}
 				onBlur={this.onWrapperBlur}
-				aria-label="rdw-wrapper"
-			> 
-
-				{!toolbarHidden && !!this.props.toolbarWrapper && this.props.toolbarWrapper(toolBarContent)}
+				aria-label="rdw-wrapper">
+				{!toolbarHidden &&
+					!!this.props.toolbarWrapper &&
+					this.props.toolbarWrapper(toolBarContent)}
 				{!toolbarHidden && !this.props.toolbarWrapper && toolBarContent}
 				<div
 					ref={this.setWrapperReference}
@@ -535,8 +537,7 @@ export default class WysiwygEditor extends Component {
 					onFocus={this.onEditorFocus}
 					onBlur={this.onEditorBlur}
 					onKeyDown={KeyDownHandler.onKeyDown}
-					onMouseDown={this.onEditorMouseDown}
-				>
+					onMouseDown={this.onEditorMouseDown}>
 					<Editor
 						ref={this.setEditorReference}
 						onTab={this.onTab}
