@@ -13,19 +13,4 @@ import pl from './pl';
 import es from './es';
 import ja from './ja';
 
-module.exports = {
-  en,
-  fr,
-  zh,
-  ru,
-  pt,
-  ko,
-  it,
-  nl,
-  de,
-  da,
-  zh_tw,
-  pl,
-  es,
-  ja
-};
+export { en, fr, zh, ru, pt, ko, it, nl, de, da, zh_tw, pl, es, ja };

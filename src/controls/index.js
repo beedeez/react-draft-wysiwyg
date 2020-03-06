@@ -12,18 +12,18 @@ import image from './Image';
 import remove from './Remove';
 import history from './History';
 
-module.exports = {
-  inline,
-  blockType,
-  fontSize,
-  fontFamily,
-  list,
-  textAlign,
-  colorPicker,
-  link,
-  embedded,
-  emoji,
-  image,
-  remove,
-  history,
+export {
+	inline,
+	blockType,
+	fontSize,
+	fontFamily,
+	list,
+	textAlign,
+	colorPicker,
+	link,
+	embedded,
+	emoji,
+	image,
+	remove,
+	history
 };

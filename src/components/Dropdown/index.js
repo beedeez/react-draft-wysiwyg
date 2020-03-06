@@ -3,7 +3,4 @@
 import Dropdown from './Dropdown';
 import DropdownOption from './DropdownOption';
 
-module.exports = {
-  Dropdown,
-  DropdownOption,
-};
+export { Dropdown, DropdownOption };
