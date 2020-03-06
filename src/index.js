@@ -7,12 +7,12 @@ import Option from './components/Option';
 import { Dropdown, DropdownOption } from './components/Dropdown';
 import { handlePastedText } from './utils/handlePaste';
 
-module.exports = {
-  Editor,
-  stopPropagation,
-  getFirstIcon,
-  handlePastedText,
-  Option,
-  Dropdown,
-  DropdownOption,
+export {
+	Editor,
+	stopPropagation,
+	getFirstIcon,
+	handlePastedText,
+	Option,
+	Dropdown,
+	DropdownOption
 };
