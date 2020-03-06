@@ -12,7 +12,7 @@ import image from './Image';
 import remove from './Remove';
 import history from './History';
 
-export {
+export default {
 	inline,
 	blockType,
 	fontSize,

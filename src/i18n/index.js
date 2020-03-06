@@ -13,4 +13,19 @@ import pl from './pl';
 import es from './es';
 import ja from './ja';
 
-export { en, fr, zh, ru, pt, ko, it, nl, de, da, zh_tw, pl, es, ja };
+export default {
+	en,
+	fr,
+	zh,
+	ru,
+	pt,
+	ko,
+	it,
+	nl,
+	de,
+	da,
+	zh_tw,
+	pl,
+	es,
+	ja
+};
