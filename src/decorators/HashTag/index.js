@@ -71,4 +71,4 @@ class Hashtag {
 
 const getDecorator = (config) => new Hashtag(config).getHashtagDecorator();
 
-export { getDecorator };
+export default getDecorator;
